@@ -22,7 +22,7 @@ IRLibLoader.load = (src, options) ->
           options.success() if options and options.success
 
       error: () ->
-        options.error(arguments) if options.error
+        options.error(arguments) if options and options.error
     })
 
   handle =
