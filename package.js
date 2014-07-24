@@ -3,7 +3,7 @@ Package.describe({
 });
 
 Package.on_use(function (api) {
-  api.use(['coffeescript'], 'client');
+  api.use(['coffeescript', 'jquery'], 'client');
 
   api.export && api.export('IRLibLoader'); 
 
