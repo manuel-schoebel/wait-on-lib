@@ -5,6 +5,7 @@ IRLibLoader._libs = IRLibLoader._libs or {}
 IRLibLoader.load = (src, options) ->
   self = @
   opt = options
+  cssRE = /\.css$/i
   unless @_libs[src]
     @_libs[src] =
       src: src
@@ -13,13 +14,16 @@ IRLibLoader.load = (src, options) ->
       options: options
     $.ajax({
       url: src
-      dataType: 'script'
+      dataType: if cssRE.test(src)
+                  'text'
+                else
+                  'script'
       success: (data, textStatus, jqxhr) ->        
         lib = self._libs[src]        
         if jqxhr.status is 200
           lib.ready = true
           lib.readyDeps.changed()
-          options.success() if options and options.success
+          options.success(data) if options and options.success
 
       error: () ->
         options.error(arguments) if options and options.error
