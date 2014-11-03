@@ -20,15 +20,18 @@ Here we have one.js and two.js. two.js has to be loaded secondly because it depe
     Router.map(function(){
       this.route('home', {
         path: '/',
-        onBeforeAction: function(pause){
+        onBeforeAction: function(){
           var one = IRLibLoader.load('/one.js', {
             success: function(){ console.log('SUCCESS CALLBACK'); },
             error: function(){ console.log('ERROR CALLBACK'); }
           });
-          if(!one.ready()){ return pause(); }
+          if(one.ready()){
 
-          var two = IRLibLoader.load('/two.js');
-          if(!two.ready()){ return pause(); }
+            var two = IRLibLoader.load('/two.js');
+            if(two.ready()){
+              this.next();
+            }
+          }
         }
       });
     });
