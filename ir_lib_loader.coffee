@@ -14,6 +14,7 @@ IRLibLoader.load = (src, options) ->
     $.ajax({
       url: src
       dataType: 'script'
+      cache: true
       success: (data, textStatus, jqxhr) ->        
         lib = self._libs[src]        
         if jqxhr.status is 200
