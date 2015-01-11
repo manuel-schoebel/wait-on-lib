@@ -32,3 +32,33 @@ IRLibLoader.load = (src, options) ->
       return lib.ready
 
   return handle
+  
+IRLibLoader.loadRecurse = (srcArray, index, handle) ->
+  if index < 0 or index >= srcArray.length
+    handle.setReady()
+    return
+  IRLibLoader.load srcArray[index],
+    success: ->
+      console.log "Loaded: " + srcArray[index]
+      IRLibLoader.loadRecurse srcArray, index + 1, handle
+      return
+    error: (e) ->
+      # this one failed - but we continue with the rest
+      console.log "Error loading: " + srcArray[index]
+      IRLibLoader.loadRecurse srcArray, index + 1, handle
+      return
+  return
+
+IRLibLoader.loadInOrder = (srcArray) ->
+  allReady = false
+  readyDeps = new Deps.Dependency
+  handle =
+    ready: ->
+      readyDeps.depend()
+      return allReady
+    setReady: ->
+      allReady = true
+      readyDeps.changed()
+      return
+  IRLibLoader.loadRecurse srcArray, 0, handle
+  return handle
