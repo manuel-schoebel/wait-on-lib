@@ -2,7 +2,7 @@ Package.describe({
   name: "manuelschoebel:wait-on-lib",
   summary: "Use Meteor Iron-Routers waitOn to load external javascript",
   git: "https://github.com/DerMambo/wait-on-lib.git",
-  version: "0.2.0"
+  version: "0.3.0"
 });
 
 Package.onUse(function (api) {
