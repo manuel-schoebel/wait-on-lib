@@ -9,7 +9,7 @@ IRLibLoader returns a handle similar to a subscriptions handle. It is ready as s
     Router.map( function () {
       this.route('codeEditor',{
         waitOn: function(){
-            return [IRLibLoader.load('https://some-external.com/javascript.js'), IRLibLoader.load("smthels.js")]
+            return [IRLibLoader.load('https://some-external.com/javascript.js'), IRLibLoader.load("smthelse.js")]
         }
       });
     });
