@@ -14,6 +14,7 @@ IRLibLoader.load = (src, options) ->
       options: options
     $.ajax({
       url: src
+      cache: true
       dataType: if cssRE.test(src)
                   'text'
                 else
