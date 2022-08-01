@@ -1,3 +1,7 @@
+# DEPRECATED
+This pacakge is no longer maintained
+
+
 wait-on-lib
 ===========
 
