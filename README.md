@@ -7,7 +7,7 @@ wait-on-lib
 
 Use Iron-Router waitOn to load external javascript libraries
 
-###Load one or more independend libraries
+### Load one or more independend libraries
 IRLibLoader returns a handle similar to a subscriptions handle. It is ready as soon as the external script is loaded.
 
     Router.map( function () {
@@ -18,7 +18,7 @@ IRLibLoader returns a handle similar to a subscriptions handle. It is ready as s
       });
     });
 
-###Load dependend libraries
+### Load dependend libraries
 Here we have one.js and two.js. two.js has to be loaded secondly because it depends on one.js. This is how you can do this:
 
     Router.map(function(){
